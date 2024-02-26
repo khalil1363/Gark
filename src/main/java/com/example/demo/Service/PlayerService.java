@@ -1,7 +1,7 @@
 package com.example.demo.Service;
 
 import java.util.List;
-
+import java.util.Optional;
 
 import com.example.demo.Model.Player;
 
@@ -13,4 +13,6 @@ public interface PlayerService {
     void deletePlayerById(Long idPlayer);
     Player getPlayer(Long idPlayer);
     List<Player> getAllPlayers();
-}
+    Optional<Player> findPlayerByName(String leagalefullname);
+    }
+

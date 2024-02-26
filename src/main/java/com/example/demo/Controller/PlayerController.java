@@ -65,4 +65,10 @@ public class PlayerController {
     public void deletePlayer(@PathVariable("id") Long id) {
         playerService.deletePlayerById(id);
     }
+    @GetMapping("/getbyname/{leagalefullname}")
+    public ResponseEntity<Player> getPlayerByName(@PathVariable("leagalefullname") String leagalefullname) {
+        return playerService.findPlayerByName(leagalefullname)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }
