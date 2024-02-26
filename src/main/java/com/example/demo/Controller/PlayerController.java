@@ -4,36 +4,36 @@ package com.example.demo.Controller;
 import com.example.demo.Model.Player;
 import com.example.demo.Service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 @RestController
 @RequestMapping("/player")
 @CrossOrigin("*")
 public class PlayerController {
 
     @Autowired
-    PlayerService playerService;
+  private  PlayerService playerService;
 
-    @RequestMapping( value="/getall" ,method = RequestMethod.GET)
+    @GetMapping("/getAll")
     public List<Player> getAllPlayers() {
         return playerService.getAllPlayers();
     }
 
-    @RequestMapping(value = "/getone/{id}", method = RequestMethod.GET)
+    @GetMapping("/get/{id}")
     public Player getPlayerById(@PathVariable("id") Long id) {
         return playerService.getPlayer(id);
     }
 
-    @RequestMapping(value="/add", method = RequestMethod.POST)
+    @PostMapping("/add")
     public Player createPlayer(@RequestBody Player player) {
         return playerService.savePlayer(player);
     }
 
-    @RequestMapping(value="/update/{id}", method = RequestMethod.PUT)
+    @PutMapping("/update/{id}")
     public ResponseEntity<Player> updatePlayer(@PathVariable("id") Long id, @RequestBody Player playerDetails) {
         Player existingPlayer = playerService.getPlayer(id);
         if (existingPlayer != null) {
@@ -61,7 +61,7 @@ public class PlayerController {
     }
 
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/delete/{id}")
     public void deletePlayer(@PathVariable("id") Long id) {
         playerService.deletePlayerById(id);
     }

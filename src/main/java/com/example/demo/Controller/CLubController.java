@@ -4,7 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,23 +25,23 @@ import com.example.demo.Service.CLubService;
 public class CLubController {
 	@Autowired
 	CLubService clubService;
-	@RequestMapping(method=RequestMethod.GET)
+	 @GetMapping("/getAll")
 	List<Club> getAllClubs(){
 		return clubService.getAllClubs();
 	}
-	@RequestMapping(value = "/{id}",method=RequestMethod.GET)
+	 @GetMapping("/get/{id}")
 	public Club getClubById(@PathVariable("id") Long id) {
 		return clubService.getClub(id);
 	}
-	@RequestMapping(method=RequestMethod.POST)
+	 @PostMapping("/add")
 	public Club createClub(@RequestBody Club club) {
 		return clubService.saveClub(club);
 	}
-	@RequestMapping( method = RequestMethod.PUT)
+	 @PutMapping("/update/{id}")
 	public Club updateClub(@RequestBody Club club) {
 	    return clubService.UpdateClub(club);
 	}
-	@RequestMapping(value = "/{id}",method=RequestMethod.DELETE)
+	    @DeleteMapping("/delete/{id}")
 	public void deleteclub(@PathVariable("id") Long id) {
 		clubService.deleteClubById(id);
 	}
