@@ -4,8 +4,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
 import java.util.Date;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class ContractPlayer {
@@ -17,6 +22,12 @@ public class ContractPlayer {
     private String clausesSpecifiques;
     private List<String> objectifs;
     private Date date;
+    
+    @ManyToOne
+    @JoinColumn(name = "player_id")
+    @JsonBackReference
+    private Player player;
+    
 	public Long getIdContractPlayer() {
 		return idContractPlayer;
 	}
