@@ -11,5 +11,6 @@ public interface ContractPlayerService {
     void deleteContractPlayerById(Long idContractPlayer);
     ContractPlayer getContractPlayer(Long idContractPlayer);
     List<ContractPlayer> getAllContractPlayers();
+    ContractPlayer createContractPlayer(ContractPlayer contractPlayer);
     // Additional methods can be defined here
 }

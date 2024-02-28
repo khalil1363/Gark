@@ -28,8 +28,9 @@ public class ContractPlayerController {
     }
 
     @PostMapping("/add")
-    public ContractPlayer createContractPlayer(@RequestBody ContractPlayer contractPlayer) {
-        return contractPlayerService.saveContractPlayer(contractPlayer);
+    public ResponseEntity<ContractPlayer> createContractPlayer(@RequestBody ContractPlayer contractPlayer) {
+        ContractPlayer newContractPlayer = contractPlayerService.createContractPlayer(contractPlayer);
+        return ResponseEntity.ok(newContractPlayer);
     }
 
     @PutMapping("/update/{id}")

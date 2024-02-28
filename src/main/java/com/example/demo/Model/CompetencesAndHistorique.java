@@ -1,9 +1,12 @@
 package com.example.demo.Model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class CompetencesAndHistorique {
@@ -15,6 +18,13 @@ public class CompetencesAndHistorique {
     private Double kdRiot;
     private Double winPorsontage;
     private String playerName;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "player_id")
+    private Player player;
+    
+    
+    
 	public Long getIdCompetence() {
 		return idCompetence;
 	}
