@@ -9,4 +9,6 @@ public interface AchievementPlayerService {
     void deleteAchievementPlayerById(Long id);
     AchievementPlayer getAchievementPlayerById(Long id);
     List<AchievementPlayer> getAllAchievementPlayers();
+    AchievementPlayer createAchievementPlayer(AchievementPlayer achievementPlayer);
+
 }

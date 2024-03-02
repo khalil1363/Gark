@@ -11,4 +11,5 @@ import com.example.demo.Model.Player;
 @Repository
 public interface PlayerRepository extends JpaRepository<Player, Long> {
 	  Optional<Player> findFirstByLeagalefullnameIgnoreCase(String leagalefullname);
+	  
 }

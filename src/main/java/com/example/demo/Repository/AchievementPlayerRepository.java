@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AchievementPlayerRepository extends JpaRepository<AchievementPlayer, Long> {
-    // Custom query methods can be defined here
 }

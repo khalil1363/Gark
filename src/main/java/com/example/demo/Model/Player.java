@@ -35,9 +35,27 @@ public class Player {
     @JsonManagedReference
     private ContractPlayer contractPlayer;
     
-    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<CompetencesAndHistorique> competences;
+    
+    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private AchievementPlayer AchievementPlayer;
+    
 
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
+    
+    
+    ///// constractor 
     public Player() {
     }
 
@@ -62,7 +80,7 @@ public class Player {
 
     
 
-    
+///getter setter    
     public Long getId() {
 		return id;
 	}
@@ -172,18 +190,22 @@ public class Player {
 	
 	
 	
-	
+	//// contarct player 
 	
 	public ContractPlayer getContractPlayer() {
         return contractPlayer;
     }
-
-    
-    
-    
-    
     public void setContractPlayer(ContractPlayer contractPlayer) {
         this.contractPlayer = contractPlayer;
         contractPlayer.setPlayer(this); 
     }
+
+    
+    
+
+    
+   
+    
+    
+    
 }

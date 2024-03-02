@@ -17,16 +17,17 @@ public class ContractPlayerServiceImpl implements ContractPlayerService {
     ContractPlayerRepository contractPlayerRepository;
     @Autowired
     private PlayerRepository playerRepository;
+    
+    
     @Override
     public ContractPlayer createContractPlayer(ContractPlayer contractPlayer) {
-     
+        
         String leagalefullname = contractPlayer.getPlayer().getLeagalefullname();
         Player player = playerRepository.findFirstByLeagalefullnameIgnoreCase(leagalefullname)
                 .orElseThrow(() -> new RuntimeException("Player not found with name: " + leagalefullname));
         contractPlayer.setPlayer(player);
         return contractPlayerRepository.save(contractPlayer);
     }
-
     @Override
     public ContractPlayer saveContractPlayer(ContractPlayer contractPlayer) {
         return contractPlayerRepository.save(contractPlayer);

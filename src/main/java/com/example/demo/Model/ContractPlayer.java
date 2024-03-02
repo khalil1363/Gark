@@ -26,6 +26,12 @@ public class ContractPlayer {
     @JsonBackReference
     private Player player;
 
+    
+    
+    
+    
+    
+    
 
     public ContractPlayer() {
     }
